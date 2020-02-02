@@ -36,5 +36,25 @@ Consider the Regulal Expressioni Threat policy.... We'll use something like this
 ```
 ### This is great but it feels a bit adhoc
 
+### Hiding ugly errors that give away info
+```xml
+<AssignMessage name="ReturnGenericError">
+  <Set>
+    <Payload type="text/plain">SERVICE UNAVAILABLE. PLEASE CONTACT SUPPORT: support@company.com.</Payload>
+  </Set>
+</AssignMessage>
+```
+
+Plus a default fault rule
+
+```xml
+<DefaultFaultRule name="fault-rule">
+    <Step>
+      <Name>ReturnGenericError</Name>
+    </Step>
+    <AlwaysEnforce>true</AlwaysEnforce>
+  </DefaultFaultRule>
+```
+
 ### Other considerations?
 This was really just the tip of the iceberg of course
